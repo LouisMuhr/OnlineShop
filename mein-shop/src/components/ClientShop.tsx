@@ -1,24 +1,14 @@
-"use client";                       // ← das macht den ganzen Baum zur Client Component
+"use client"; // ← das macht den ganzen Baum zur Client Component
 import { products } from "@/data/products";
 import BuyButton from "@/components/BuyButton";
-import Cart from "@/components/Cart";
 import { useCart } from "@/lib/cartStore";
+import Link from "next/link";
 
 export default function ClientShop() {
   const items = useCart((s) => s.items);
 
   return (
     <main className="min-h-screen bg-[#fffdf9]">
-      {/* Header */}
-      <header className="bg-white shadow-sm sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-          <h1 className="text-4xl font-bold text-[#ee3a38]">Chili Inferno</h1>
-          <div className="flex items-center gap-3">
-            <span className="text-2xl">Warenkorb ({items.length})</span>
-          </div>
-        </div>
-      </header>
-
       {/* Hero */}
       <section className="bg-gradient-to-br from-orange-50 to-red-50 py-20 text-center">
         <h2 className="text-6xl font-black text-[#ee3a38] mb-4">
@@ -35,42 +25,51 @@ export default function ClientShop() {
           {products.map((p) => (
             <article
               key={p.id}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group"
+              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full"
             >
               <div className="relative overflow-hidden">
                 <img
-                  src={p.image || "https://via.placeholder.com/600x800/ff6b35/ffffff?text=Chili"}
+                  src={
+                    p.image ||
+                    "https://via.placeholder.com/600x800/ff6b35/ffffff?text=Chili"
+                  }
                   alt={p.name}
-                  className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-64 sm:h-80 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute top-4 right-4 bg-[#ee3a38] text-white px-3 py-1 rounded-full text-sm font-bold">
-                  {p.hotness || "EXTREM SCHARF"}
+                <div className="absolute top-4 right-4 bg-[#ee3a38] text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                  {p.hotness || "Ultra Scharf"}
                 </div>
               </div>
 
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-gray-800 mb-2">{p.name}</h3>
-                <div className="flex items-center gap-1 mb-3">
+              <div className="p-5 flex flex-col flex-grow">
+                <h3 className="text-xl font-bold text-gray-800 mb-2 line-clamp-2">
+                  {p.name}
+                </h3>
+
+                {/* Schärfegrad */}
+                <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <span key={i}>
-                        {i < (p.spiciness || 4) ? "Chili" : "Chili"}
+                    <span key={i} className="text-lg">
+                      {i < (p.spiciness ?? 0) ? "Chili" : "Chili"}
                     </span>
                   ))}
                 </div>
-                <div className="flex justify-between items-center">
+
+                {/* Preis + Button in einer Zeile */}
+                <div className="mt-auto flex items-center justify-between gap-4">
                   <span className="text-3xl font-black text-[#ee3a38]">
                     {p.price.toFixed(2)} €
                   </span>
-                  <BuyButton product={{ id: p.id, name: p.name, price: p.price }} />
+
+                  <BuyButton
+                    product={{ id: p.id, name: p.name, price: p.price }}
+                  />
                 </div>
               </div>
             </article>
           ))}
         </div>
       </section>
-
-      {/* Warenkorb */}
-      {items.length > 0 && <Cart />}
     </main>
   );
 }
