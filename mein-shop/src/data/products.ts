@@ -4,7 +4,7 @@ export const products = [
     id: "1",
     name: "Carolina Reaper Pulver",
     price: 19.99,
-    image: "https://images.unsplash.com/photo-1607305387299-d997d12abc30?w=800",
+    image: "/images/Roller.jpeg",
     description: "Die schärfste Chili der Welt als Pulver",
     hotness: "2.200.000 SHU",   // <-- neu
     spiciness: 5,               // <-- neu (1–5)
@@ -27,5 +27,22 @@ export const products = [
     hotness: "5.000 SHU",
     spiciness: 2,
   },
-  // weitere Produkte einfach so ergänzen
+  {
+    id: "4",
+    name: "Jalapeño Leon",
+    price: 6.99,
+    image: "https://images.unsplash.com/photo-1625246333197-973eae2e4ce4?w=800",
+    description: "Perfekt für Einsteiger",
+    hotness: "5.000 SHU",
+    spiciness: 2,
+  },
+    {
+    id: "5",
+    name: "Orange Kind",
+    price: 6.99,
+    image: "https://images.unsplash.com/photo-1625246333197-973eae2e4ce4?w=800",
+    description: "Perfekt für Einsteiger",
+    hotness: "5.000 SHU",
+    spiciness: 2,
+  },
 ];

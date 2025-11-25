@@ -8,13 +8,13 @@ export default function ClientShop() {
   return (
     <main className="min-h-screen bg-[#fffaf7]">
       {/* Hero Section */}
-      <section className="relative py-24 overflow-hidden bg-gradient-to-br from-orange-50 via-red-50 to-amber-50">
-        <div className="max-w-7xl mx-auto px-6 text-center">
+      <section className="relative py-2 overflow-hidden bg-gradient-to-br from-orange-50 via-red-50 to-amber-50">
+        <div className="max-w-5xl mx-auto px-3 text-center">
           <h2 className="font-display text-6xl md:text-7xl font-bold text-[#e63946] mb-6 leading-tight">
             Chili Inferno
           </h2>
           <p className="text-2xl md:text-3xl text-gray-800 max-w-4xl mx-auto leading-relaxed">
-            Die schärfsten Chilis Deutschlands – von Hand geerntet, natürlich getrocknet, kompromisslos intensiv.
+            blabla
           </p>
         </div>
       </section>
@@ -36,9 +36,10 @@ export default function ClientShop() {
                 {/* Bild */}
                 <div className="relative aspect-[4/5] overflow-hidden">
                   <img
-                    src={p.image || "https://via.placeholder.com/800x1000/e63946/ffffff?text=Chili"}
+                    src={p.image || "/images/fallback-chili.jpg"}
                     alt={p.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover ..."
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                   <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg">
@@ -70,7 +71,9 @@ export default function ClientShop() {
                     </span>
 
                     <button
-                      onClick={() => addItem({ id: p.id, name: p.name, price: p.price })}
+                      onClick={() =>
+                        addItem({ id: p.id, name: p.name, price: p.price })
+                      }
                       className="relative px-7 py-4 bg-gradient-to-r from-[#e63946] to-[#c1121f] text-white font-semibold rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
                     >
                       <span className="relative z-10">In den Warenkorb</span>
