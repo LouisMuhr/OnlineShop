@@ -19,15 +19,17 @@ export default function Navbar() {
         {/* Warenkorb-Button – schön kompakt */}
         <Link
           href="/cart"
-          className="relative bg-[#ee3a38] text-white px-8 py-4 rounded-2xl font-bold hover:bg-red-700 transition flex items-center gap-3 shadow-lg"
+          className="relative px-8 py-4 bg-gradient-to-r from-[#e63946] to-[#c1121f] text-white font-bold rounded-2xl shadow-2xl hover:shadow-red-500/50 transform hover:-translate-y-1 transition-all duration-300 overflow-hidden"
         >
-          <span className="hidden sm:inline">Warenkorb</span>
-          {/* Anzahl-Badge */}
+          <span className="relative z-10 flex items-center gap-3">
+            <span>Warenkorb</span>
+          </span>
           {itemCount > 0 && (
-            <span className="absolute -top-3 -right-3 bg-[#a7d848] text-black text-sm font-black rounded-full h-8 w-8 flex items-center justify-center shadow-md">
+            <span className="absolute -top-3 -right-3 bg-[#f4a261] text-black font-black rounded-full h-9 w-9 flex items-center justify-center shadow-lg">
               {itemCount}
             </span>
           )}
+          <div className="absolute inset-0 bg-white/20 -translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
         </Link>
       </div>
     </header>
