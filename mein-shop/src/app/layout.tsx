@@ -1,14 +1,18 @@
-// src/app/layout.tsx
+// app/layout.tsx
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-display",
+});
 
 export const metadata: Metadata = {
-  title: "Chili Inferno – Die schärfsten Chilis Deutschlands",
-  description: "Frische Chilis, Saucen & Pulver – von mild bis Weltrekord",
+  title: "Louis Privatkoch – Exklusive Menüs bei Ihnen zu Hause",
+  description: "Maßgeschneiderte Privatkoch-Erlebnisse in höchster Qualität",
 };
 
 export default function RootLayout({
@@ -18,7 +22,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="de">
-      <body className={`${inter.className} bg-[#fffdf9] min-h-screen`}>
+      <body
+        className={`${inter.variable} ${playfair.variable} font-sans bg-stone-50 text-gray-900 min-h-screen`}
+      >
         <Navbar />
         {children}
       </body>
